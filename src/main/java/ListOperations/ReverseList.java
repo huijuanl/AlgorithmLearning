@@ -1,6 +1,6 @@
 package ListOperations;
-
-class Node {
+//内部类
+class  Node { //若放在类内部，为内部类，设置成static（表示生成一个静态内部类不需要外部类成员：这是静态内部类和成员内部类的区别。）
     public int data;
     public Node next;
 
@@ -21,8 +21,26 @@ class DoubleNode {
 }
 
 public class ReverseList {
-
-
+//     //内部类
+//    public static class  Node { //若放在类内部，为内部类，设置成static（表示生成一个静态内部类不需要外部类成员：这是静态内部类和成员内部类的区别。）
+//        public int data;
+//        public Node next;
+//
+//        public Node(int data) {
+//            this.data = data;
+//        }
+//
+//    }
+//
+//    public static class DoubleNode {
+//        public int data;
+//        public DoubleNode pre;
+//        public DoubleNode next;
+//        public DoubleNode(int data) {
+//            this.data = data;
+//        }
+//
+//    }
     public static Node ReverseSingleList(Node head) {
         //cur指向当前结点，while循环用到了三个指针：pre,cur,next;该链表没有头节点
         Node pre = null;//初始化为null是为了把第一个结点的next赋值为null
