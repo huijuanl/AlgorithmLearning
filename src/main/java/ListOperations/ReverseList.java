@@ -1,5 +1,4 @@
-import java.util.LinkedList;
-import java.util.List;
+package ListOperations;
 
 class Node {
     public int data;
