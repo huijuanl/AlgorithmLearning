@@ -1,8 +1,6 @@
 package ListOperations;
 
-
 import java.util.Stack;
-
 import static ListOperations.ReverseList.printLinkedList;
 
 public class IsPalindromeList {
