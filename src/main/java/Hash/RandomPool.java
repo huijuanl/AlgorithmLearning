@@ -2,13 +2,12 @@ package Hash;
 
 import java.util.HashMap;
 
-import javax.swing.text.DefaultEditorKit.InsertBreakAction;
 
 public class RandomPool {
 	public static class Pool {
 		HashMap<String,Integer> hashmap1 ;
 		HashMap<Integer,String> hashmap2 ;
-		int size;//0-(size-1)ÎªÒÑ´æ´¢µÄÊý¾Ý
+		int size;//0-(size-1)Îªï¿½Ñ´æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		public Pool(){
 			 this.hashmap1 = new HashMap<String,Integer>();
 			 this.hashmap2 = new HashMap<Integer,String>();

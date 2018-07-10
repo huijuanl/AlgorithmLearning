@@ -25,7 +25,7 @@ public class LongestIncreasingSubsequence {
 		dp[0]=1;
 		for(int i=1;i<dp.length;i++){
 			dp[i]=dp[i-1];
-			//如果最长子序列以arr[i]结尾，那么在[0,,i-1]中所有比arr[i]小的数都作为倒数第二大的数
+			//如果最长子序列以arr[i]结尾，那么在[0,,i-1]中所有比arr[i]小的数都有机会作为倒数第二大的数
 			for(int j=i-1;j>=0;j--){
 				if((arr[j]<=arr[i])&&((dp[j]+1)>=dp[i]))
 					dp[i]=dp[j]+1;

@@ -91,16 +91,43 @@ public class knapsack {
 
 		return max;
 	}
+    //最容易理解的方法:
+	public static int maxValue4(int[]c,int[]p,int bag){
+		//d[i][j]表示前0,1...i件物品，重量不超过j时的最大value
+		//那么这不大于j的重量可能包含了第i个物品的重量，也可能没有包含
+		int[][]dp= new int[p.length][bag+1];
+		//第一行初始化
+		for(int j=0;j<dp[0].length;j++){
+			if(c[0]<=j)
+				dp[0][j]=p[0];
 
-		
+		}
+		//搭积木
+	    for(int i=1;i<dp.length;i++)
+	    	for (int j=0;j<dp[0].length;j++)
+			{dp[i][j]=dp[i-1][j];
+			if(c[i]<=j)
+				dp[i][j]=Math.max(dp[i][j],dp[i-1][j-c[i]]+p[i]);
+			}
+			//print dp
+//		for(int i=1;i<dp.length;i++)
+//			for (int j=0;j<dp[0].length;j++){
+//			System.out.print(dp[i][j]+" ");
+//			if(j==dp[0].length-1)
+//				System.out.println();
+//
+//			}
+	    return dp[dp.length-1][dp[0].length-1];
+	}
 
 	
 	public static void main(String[] args) {
 		int[] c = { 3, 2, 4, 7 };
 		int[] p = { 5, 6, 3, 7 };
-		int bag = 16;
+		int bag = 21;
 		System.out.println(maxValue1(c, p, bag));
 		System.out.println(maxValue2(c, p, bag));
 		System.out.println(maxValue3(c, p, bag));
+		System.out.println(maxValue4(c, p, bag));
 	}
 }
