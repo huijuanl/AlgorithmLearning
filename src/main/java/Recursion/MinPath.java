@@ -6,8 +6,9 @@ public class MinPath {
 
 
     }
+    //暴力递归
     public static int process1(int[][] matrix, int i, int j) {//返回matrix[i][j]点开始的最小路径
-        if(i==(matrix.length-1)&&j==(matrix[0].length-1))
+        if(i==(matrix.length-1)&&j==(matrix[0].length-1))//basecase
             return matrix[i][j];
 
         if(i==(matrix.length-1))
@@ -18,6 +19,23 @@ public class MinPath {
         int down = process1(matrix,i+1,j);
         return matrix[i][j]+Math.min(right,down);
 
+    }
+    //动态规划,根据暴力递归进行修改，先将basecase进行修改
+    public static int minPath2(int[][] matrix) {//返回matrix[i][j]点开始的最小路径
+    	int [][] dp = new int[matrix.length][matrix[0].length];
+    	dp[matrix.length-1][matrix[0].length-1]=matrix[matrix.length-1][matrix[0].length-1];
+    	for(int j=matrix[0].length-2;j>=0;j--){
+    		dp[matrix.length-1][j]=matrix[matrix.length-1][j]+dp[matrix.length-1][j+1];
+    	}
+    	for(int i=matrix.length-2;i>=0;i--){
+    		dp[i][matrix[0].length-1]=matrix[i][matrix[0].length-1]+dp[i+1][matrix[0].length-1];
+    	}
+    	for(int j=matrix[0].length-2;j>=0;j--)
+    		for(int i=matrix.length-2;i>=0;i--){
+    		  dp[i][j]=matrix[i][j]+Math.min(dp[i][j+1], dp[i+1][j]);
+    		}
+    	
+    	return dp[0][0];
     }
     // for test
     public static int[][] generateRandomMatrix(int rowSize, int colSize) {
@@ -36,8 +54,9 @@ public class MinPath {
     public static void main(String[] args) {
         int[][] m = { { 1, 3, 5, 9 }, { 8, 1, 3, 4 }, { 5, 0, 6, 1 }, { 8, 8, 4, 0 } };
         System.out.println(minPath1(m));
-
+        System.out.println(minPath2(m));
         m = generateRandomMatrix(6, 7);
         System.out.println(minPath1(m));
+        System.out.println(minPath2(m));
     }
 }
