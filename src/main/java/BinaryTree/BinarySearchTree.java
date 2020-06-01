@@ -2,8 +2,6 @@ package BinaryTree;
 
 import java.util.Stack;
 
-import BinaryTree.Code_07_IsBSTAndCBT.Node;
-
 //判断是否是二叉搜索树：用中序遍历非递归法，判断是否是升序（用中序遍历的递归法比较难）
 //每遍历一个结点，就去判断当前结点的值是否大于前一个结点，用一个变量来记录前一个结点的值，初始值定义为系统最小值
 public class BinarySearchTree {
